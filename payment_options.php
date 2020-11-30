@@ -14,26 +14,14 @@
 
     ?>
     
-    <h1 class="text-center">Payment Options For You</h1>  
+    <h1 class="text-center">Confirm your order</h1>  
     
      <p class="lead text-center">
          
-         <a href="order.php?c_id=<?php echo $customer_id ?>"> Offline Payment </a>
+         <a href="order.php?c_id=<?php echo $customer_id ?>"> OK !</a>
          
      </p>
      
-     <center>
-         
-        <p class="lead">
-            
-            <a href="#">
-                
-                Paypal Payment
-                
-            </a>
-            
-        </p> 
-         
-     </center>
+     
     
 </div>

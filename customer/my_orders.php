@@ -28,7 +28,6 @@
                 <th> Quantity: </th>
                 <th> Size: </th>
                 <th> Order Date: </th>
-                <th> Paid/unpaid: </th>
                 <th>Status: </th>
 
             </tr>
@@ -77,11 +76,11 @@
 
                     if($order_status=='Pending'){
 
-                        $order_status = 'Unpaid';
+                        $order_status = 'Pending';
 
                     } else{
 
-                        $order_status = 'Paid';
+                        $order_status = 'Confirm';
 
                     }
 
@@ -96,11 +95,6 @@
                 <td> <?php echo $size; ?> </td>
                 <td> <?php echo $order_date; ?> </td>
                 <td> <?php echo $order_status; ?> </td>
-                <td>
-
-                    <a href="confirm.php?order_id='<?php echo $order_id ?>'" target="_blank" class="btn btn-primary btn-sm">confirm paid</a>
-
-                </td>
 
             </tr>
 
