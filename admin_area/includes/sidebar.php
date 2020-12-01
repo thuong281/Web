@@ -174,12 +174,6 @@
             </li>
 
             <li>
-                <a href="index.php?view_payments">
-                    <i class="fa fa-fw fa-money"></i> View Payments
-                </a>
-            </li>
-
-            <li>
 
                 <a href="#" data-toggle="collapse" data-target="#users">
 

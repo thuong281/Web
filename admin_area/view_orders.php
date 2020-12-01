@@ -47,6 +47,7 @@
                                 <th> Total Amount: </th>
                                 <th> Status: </th>
                                 <th> Delete: </th>
+                                <th> Confirm: </th>
                             </tr>
                         </thead>
 
@@ -109,11 +110,26 @@
                                 <td> <?php echo $size; ?> </td>
                                 <td> <?php echo $order_date; ?> </td>
                                 <td> <?php echo $qty * $price_each; ?> </td>
-                                <td> <?php echo $order_status; ?> </td>
+                                <?php
+                                    if ($order_status=="Pending"){
+                                        echo"<td style='color:red';> $order_status </td>";
+                                    }else {
+                                        echo"<td style='color:green';> $order_status </td>";
+                                    }
+                                
+                                ?>
+
                                 <td> 
                                     <a href="index.php?delete_order=<?php echo $order_id; ?>">
 
                                         <i class="fa fa-trash-o"></i> Delete
+
+                                    </a> 
+                                </td>
+                                <td> 
+                                    <a href="index.php?confirm_order=<?php echo $order_id; ?>">
+
+                                        <i class="fa fa-check"></i> Confirm
 
                                     </a> 
                                 </td>

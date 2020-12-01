@@ -49,13 +49,17 @@
 
         $c_new_pass_again = $_POST['new_pass_again'];
 
-        $sel_old_pass = "select * from customers where customer_pass='$c_old_pass'";
+        $c_new_pass_hash = password_hash($c_new_pass, PASSWORD_DEFAULT);
+
+        $sel_old_pass = "select * from customers where customer_email='$c_email'";
 
         $run_c_old_pass = mysqli_query($con, $sel_old_pass);
 
         $check_c_old_pass = mysqli_fetch_array($run_c_old_pass);
 
-        if ($check_c_old_pass==0) {
+        $customer_pass_hash = $check_c_old_pass['customer_pass'];
+
+        if (!password_verify($c_old_pass,$customer_pass_hash)) {
             echo "<script>alert('Wrong password')</script>";
 
             exit();
@@ -66,7 +70,7 @@
             exit();
         }
 
-        $update_c_pass = "update customers set customer_pass='$c_new_pass' where customer_email='$c_email'";
+        $update_c_pass = "update customers set customer_pass='$c_new_pass_hash' where customer_email='$c_email'";
 
         $run_c_pass = mysqli_query($con, $update_c_pass);
 

@@ -143,6 +143,8 @@
 
         $c_pass =  $_POST['c_password'];
 
+        $c_pass_hash = password_hash($c_pass, PASSWORD_DEFAULT);
+
         $c_address =  $_POST['c_address'];
         
         $c_contact =  $_POST['c_contact'];
@@ -153,28 +155,32 @@
 
         $c_ip = getRealIpUser();
 
-        move_uploaded_file($c_image_tmp,"customer/customer_images/$c_image");
+        $find_customer = "select * from customers where customer_email='$c_email'";
 
-        $insert_customer = "insert into customers (customer_name,customer_email,customer_pass,customer_contact,customer_address,customer_image,customer_ip)
-         values ('$c_name','$c_email','$c_pass','$c_contact','$c_address','$c_image','$c_ip')";
+        $run_find_customer = mysqli_query($con, $find_customer);
 
-        $run_customer = mysqli_query($con,$insert_customer);
+        $if_exist = mysqli_num_rows($run_find_customer);
 
-        $sel_cart = "select * from cart where ip_add='$c_ip'";
+        if($if_exist > 0) {
 
-        $run_cart = mysqli_query($con,$sel_cart);
+            echo "<script>alert('Email existed, please use another email')</script>";
 
-        $check_cart = mysqli_num_rows($run_cart);
-
-        if($check_cart > 0){
-
-            $_SESSION['customer_email'] = $c_email;
-
-            echo "<script>alert('you have been registered successfully')</script>";
-
-            echo "<script>window.open('checkout.php','_self')</script>";
+            exit();
 
         } else {
+
+            move_uploaded_file($c_image_tmp,"customer/customer_images/$c_image");
+
+            $insert_customer = "insert into customers (customer_name,customer_email,customer_pass,customer_contact,customer_address,customer_image,customer_ip)
+            values ('$c_name','$c_email','$c_pass_hash','$c_contact','$c_address','$c_image','$c_ip')";
+
+            $run_customer = mysqli_query($con,$insert_customer);
+
+            $sel_cart = "select * from cart where ip_add='$c_ip'";
+
+            $run_cart = mysqli_query($con,$sel_cart);
+
+            $check_cart = mysqli_num_rows($run_cart);
 
             $_SESSION['customer_email'] = $c_email;
 

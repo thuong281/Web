@@ -68,7 +68,7 @@
 
         <input type="file" name="c_image" class="form-control" required>
     
-        <img width=20% src="customer_images/<?php echo $customer_image; ?>"" alt="" class="img-responsive">
+        <img width=20% src="customer_images/<?php echo $customer_image; ?>" alt="" class="img-responsive">
 
     </div>
 
