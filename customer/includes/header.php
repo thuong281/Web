@@ -90,8 +90,8 @@
                
                <a href="../index.php" class="navbar-brand home">
                    
-                   <img src="images/ecom-store-logo.png" alt="M-dev-Store Logo" class="hidden-xs">
-                   <img src="images/ecom-store-logo-mobile.png" alt="M-dev-Store Logo Mobile" class="visible-xs">
+                   <img src="images/logo.png" alt="M-dev-Store Logo" class="hidden-xs">
+                   <img src="images/logo.png" alt="M-dev-Store Logo Mobile" class="visible-xs">
                    
                </a>
                
